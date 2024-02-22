@@ -11,11 +11,11 @@ bert_model_path: 'G:\models\roberta-base'
 model: 'ext'
 loss_rate: 0.8
 device: 'cuda:0'
-lr: 0.0002
+lr: 0.00005
 patience: 4
 n_epochs: 20
-batch_size: 4
-num_workers: 0
+batch_size: 24
+num_workers: 2
 seed: 999
 
 # dataset special
@@ -31,7 +31,6 @@ lstm_hidden_dim: 256
 g_n_head: 32
 g_n_layer: 6
 g_hidden_dim: 512
-decoder_n_layer: 6
 
 # limit
 sent_max_len: 100
@@ -47,24 +46,23 @@ word_emb_dim: 256
 feat_dim: 256
 
 # Evaluation
-test_model: 'multi' # [multi/evalbestmodel/trainbestmodel/earlystop/evalbestFmodel]
-use_pyrouge: False
+test_model: 'multi'
+use_pyrouge: True
 save_label: False # 保存模型输出的label, 不进行指标评测
 limited: False # 截断模型输出到摘要的长度
 blocking: False # 从高概率到低概率选择ngram重叠度低的句子
 blocking_window: 4
-threshold: 0.15 # top_k 阈值
-gen_method: 'greedy'
+threshold: 0.185 # top_k 阈值
 
 # Graph Cache
 # ulimit -n
 cache_version: '6.0'
 cache_use_exist: True
-cache_batch: 4
-cache_worker: 0
+cache_batch: 32
+cache_worker: 24
 
 # dev
-dev: True
+dev: False
 strict_memory: False
 memory_limit: 80
 ignore_save_folder: False
