@@ -1,0 +1,70 @@
+# [Data]
+datasets_dir: 'G:\datasets\msmo_processed_v3'
+embedding_file: 'G:\datasets/glove/glove.6B.300d.txt'
+save_root: 'save/'
+# Restore model for further training. [bestmodel/earlystop/None]
+restore_model: ''
+stored_blip_feature_dir: 'G:\datasets\msmo_processed_v3\blip_base'
+stored_bert_feature_dir: 'G:\datasets\msmo_processed_v3\roberta_base'
+bert_model_path: 'G:\models\roberta-base'
+# Train
+model: 'ext'
+loss_rate: 0.8
+device: 'cuda:0'
+lr: 0.0002
+patience: 4
+n_epochs: 20
+batch_size: 4
+num_workers: 0
+seed: 999
+
+# dataset special
+m: 3
+max_dist: 8
+vocab_size: 50000
+
+# lstm
+lstm_n_layers: 2
+lstm_hidden_dim: 256
+
+# graphormer
+g_n_head: 32
+g_n_layer: 6
+g_hidden_dim: 512
+decoder_n_layer: 6
+
+# limit
+sent_max_len: 100
+abs_max_len: 200
+sent_max_num: 50
+img_max_num: 16
+word_max_num: 400
+img_weight_limit: 0
+
+# feat dim
+image_feature_dim: 256
+word_emb_dim: 256
+feat_dim: 256
+
+# Evaluation
+test_model: 'multi' # [multi/evalbestmodel/trainbestmodel/earlystop/evalbestFmodel]
+use_pyrouge: False
+save_label: False # 保存模型输出的label, 不进行指标评测
+limited: False # 截断模型输出到摘要的长度
+blocking: False # 从高概率到低概率选择ngram重叠度低的句子
+blocking_window: 4
+threshold: 0.15 # top_k 阈值
+gen_method: 'greedy'
+
+# Graph Cache
+# ulimit -n
+cache_version: '6.0'
+cache_use_exist: True
+cache_batch: 4
+cache_worker: 0
+
+# dev
+dev: True
+strict_memory: False
+memory_limit: 80
+ignore_save_folder: False

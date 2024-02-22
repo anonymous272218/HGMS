@@ -1,0 +1,8 @@
+dataset_dir: G:\datasets\MSMO
+save_dir: G:\datasets\msmo_processed_v3\cache
+blip_output: G:\datasets\msmo_processed_v3\blip_base
+blip_model_path: G:/models/blip-itm-base-coco
+bert_output: G:\datasets\msmo_processed_v3\roberta_base
+bert_model_path: G:\models\roberta-base
+n_cpu: 10
+device: cuda:0
